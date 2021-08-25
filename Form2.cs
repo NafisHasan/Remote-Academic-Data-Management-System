@@ -1,14 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Globalization;
-using System.Data.SQLite;
 
 namespace Student_Record
 {
@@ -21,6 +13,9 @@ namespace Student_Record
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "yyyy";
             dateTimePicker1.ShowUpDown = true;
+            //Properties.Settings.Default.test = "xyz";
+            //Properties.Settings.Default.Save();
+            //MessageBox.Show(Properties.Settings.Default.test);
         }
         public void Clear()
         {
@@ -56,9 +51,9 @@ namespace Student_Record
                     {
                         Int32 selectedRowCount = dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected);
                         Int32 numRows = dataGridView1.Rows.Count;
-                        if(dataGridView1.SelectedRows[0].Index == numRows-1 && selectedRowCount < 2)
+                        if (dataGridView1.SelectedRows[0].Index == numRows - 1 && selectedRowCount < 2)
                         {
-                            MessageBox.Show( "Uncommitted new row cannot be deleted." , "Error");
+                            MessageBox.Show("Uncommitted new row cannot be deleted.", "Error");
                         }
                         if (selectedRowCount > 0)
                         {
@@ -91,7 +86,7 @@ namespace Student_Record
 
         private void Form2_Load(object sender, EventArgs e)
         {
-           if (DBConnect.IsInternetAvailable())
+            if (DBConnect.IsInternetAvailable())
             {
                 dbConnect = new DBConnect();
                 List<string>[] list;
@@ -111,7 +106,7 @@ namespace Student_Record
                     comboBox2.Items.Add(list[0][i]);
                 }
             }
-           else
+            else
                 MessageBox.Show("Connection Failed! Check Your Internet Connectivity.");
         }
 
@@ -163,8 +158,8 @@ namespace Student_Record
         {
             dbConnect = new DBConnect();
             List<string>[] list;
-            string id= this.comboBox1.GetItemText(this.comboBox1.SelectedItem);
-            list = dbConnect.Select("select name from student where studentId=" + id+";", 1);
+            string id = this.comboBox1.GetItemText(this.comboBox1.SelectedItem);
+            list = dbConnect.Select("select name from student where studentId=" + id + ";", 1);
             for (int i = 0; i < list[0].Count; i++)
             {
                 comboBox6.SelectedIndex = comboBox6.FindStringExact(list[0][i]);
@@ -206,15 +201,15 @@ namespace Student_Record
         {
             Boolean value = false;
             Int32 numRows2 = dataGridView2.Rows.Count;
-            
+
             for (int j = 0; j < numRows2 - 1; j++)
             {
                 if (Convert.ToString(dataGridView2.Rows[j].Cells[2].Value) == Convert.ToString(dataGridView1.Rows[row].Cells[0].Value))
                     if (comboBox1.Text == Convert.ToString(dataGridView2.Rows[j].Cells[0].Value))
-                        value= true;
+                        value = true;
             }
 
-            return value;        
+            return value;
         }
 
         public Boolean Check2(int row1)
@@ -222,10 +217,10 @@ namespace Student_Record
             Boolean value = false;
             //Int32 numRows1 = dataGridView1.Rows.Count;
 
-            for (int j = 0; j < row1 ; j++)
+            for (int j = 0; j < row1; j++)
             {
                 if (Convert.ToString(dataGridView1.Rows[j].Cells[0].Value) == Convert.ToString(dataGridView1.Rows[row1].Cells[0].Value))
-                        value = true;
+                    value = true;
             }
 
             return value;
@@ -233,11 +228,11 @@ namespace Student_Record
         private void Button2_Click(object sender, EventArgs e)
         {
             Int32 numRows = dataGridView1.Rows.Count;
-            
-            for (int i = 0; i < numRows-1; i++)
+
+            for (int i = 0; i < numRows - 1; i++)
             {
                 double total = Convert.ToDouble(dataGridView1.Rows[i].Cells[2].Value) + Convert.ToDouble(dataGridView1.Rows[i].Cells[3].Value) + Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value) + Convert.ToDouble(dataGridView1.Rows[i].Cells[5].Value) + Convert.ToDouble(dataGridView1.Rows[i].Cells[6].Value);
-                
+
                 if (dataGridView1.Rows[i].Cells[0].Value == null || Convert.ToString(dataGridView1.Rows[i].Cells[0].Value) == string.Empty)
                     continue;
 
@@ -253,12 +248,12 @@ namespace Student_Record
                 }*/
                 Int32 numRowsinLoop = dataGridView1.Rows.Count;
                 if (numRowsinLoop > 2)
-                if (Check2(i) == true)
-                continue;
-                
+                    if (Check2(i) == true)
+                        continue;
+
 
                 dataGridView1.Rows[i].Cells[7].Value = total;
-                
+
                 if (total > 100)
                 {
                     MessageBox.Show("Unexpected value in the column 'TOTAL'", "Error");
@@ -287,12 +282,12 @@ namespace Student_Record
                 else
                     dataGridView1.Rows[i].Cells[8].Value = 0.00;
 
-             }
-            
-            for (int i = 0; i < numRows-1; i++)
+            }
+
+            for (int i = 0; i < numRows - 1; i++)
             {
                 if (dataGridView1.Rows[i].Cells[7].Value == null || Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value) > 100.0 || Convert.ToString(dataGridView1.Rows[i].Cells[7].Value) == string.Empty)
-                continue;
+                    continue;
 
                 if (Check(i) == true)
                     continue;
@@ -328,9 +323,9 @@ namespace Student_Record
         private void DataGridView1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
-        {
-            e.Handled = true;
-        }
+            {
+                e.Handled = true;
+            }
             if (e.KeyChar == '.'
             && (sender as TextBox).Text.IndexOf('.') > -1)
             {
@@ -451,10 +446,10 @@ namespace Student_Record
                     comboBox2.SelectedIndex = comboBox2.FindStringExact(list[0][i]);
                 }
 
-                list = dbConnect.Select("select shift from program where programId=(select programId from student where studentId=" + Id + ");",1);
-                if(list[0][0]== "Regular")
+                list = dbConnect.Select("select shift from program where programId=(select programId from student where studentId=" + Id + ");", 1);
+                if (list[0][0] == "Regular")
                     radioButton1.Checked = true;
-                else if(list[0][0] == "Evening")
+                else if (list[0][0] == "Evening")
                     radioButton2.Checked = true;
 
 
@@ -462,7 +457,7 @@ namespace Student_Record
                 e.SuppressKeyPress = true;
 
             }
-          
+
         }
 
         private void DataGridView2_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
