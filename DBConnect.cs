@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.IO;
 using MySql.Data.MySqlClient;
 using System.Runtime.InteropServices;
+using System.Data;
 
 namespace Student_Record
 {
@@ -32,6 +33,7 @@ namespace Student_Record
         private string database;
         private string uid;
         private string password;
+        public static DataSet DS = new DataSet();
 
         public DBConnect()
         {
@@ -71,7 +73,7 @@ namespace Student_Record
                             MessageBox.Show("Invalid username/password, please try again");
                             break;
                         default:
-                            Console.WriteLine(ex.Message);
+                            MessageBox.Show(ex.Message);
                             break;
                     }
                     return false;
@@ -157,6 +159,18 @@ namespace Student_Record
             {
                 MySqlCommand cmd = new MySqlCommand(Q, connection);
                 cmd.ExecuteNonQuery();
+                this.CloseConnection();
+            }
+        }
+
+        public void FillDataSet(String Q1,String Q2)
+        {
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(Q1, connection);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                adapter.Fill(DS, Q2);
                 this.CloseConnection();
             }
         }

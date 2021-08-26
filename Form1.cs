@@ -166,6 +166,11 @@ namespace Student_Record
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            DBConnect dbConnect = new DBConnect();
+            dbConnect.FillDataSet("select name from department", "department");
+            dbConnect.FillDataSet("select batchId from batch", "batch");
+            dbConnect.FillDataSet("select name from program", "program");
+            
             if (fm2 == null || fm2.Text == "")
             {
                 fm2 = new Form2
@@ -179,7 +184,6 @@ namespace Student_Record
             {
                 fm2.WindowState = FormWindowState.Normal;
                 fm2.Dock = DockStyle.Fill;
-                fm2.Show();
                 fm2.Focus();
             }
 

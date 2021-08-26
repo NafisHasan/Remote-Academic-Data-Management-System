@@ -16,5 +16,20 @@ namespace Student_Record
         {
             InitializeComponent();
         }
+
+        private void Form5_Load(object sender, EventArgs e)
+        {
+            comboBox2.DataSource = DBConnect.DS.Tables["department"].DefaultView;
+            comboBox2.ValueMember = "name";
+            comboBox5.DataSource = DBConnect.DS.Tables["batch"].DefaultView;
+            comboBox5.ValueMember = "batchId";
+            comboBox3.DataSource = DBConnect.DS.Tables["program"].DefaultView;
+            comboBox3.ValueMember = "name";
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
