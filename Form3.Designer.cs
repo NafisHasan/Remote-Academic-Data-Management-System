@@ -44,14 +44,16 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label24 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.comboBox13 = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.comboBox11 = new System.Windows.Forms.ComboBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -83,6 +85,10 @@
             this.label12 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel10 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
@@ -117,12 +123,10 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox13 = new System.Windows.Forms.ComboBox();
-            this.label24 = new System.Windows.Forms.Label();
+            this.comboBox14 = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -145,6 +149,10 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.AliceBlue;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.radioButton5);
+            this.panel1.Controls.Add(this.label25);
+            this.panel1.Controls.Add(this.radioButton6);
+            this.panel1.Controls.Add(this.comboBox14);
             this.panel1.Controls.Add(this.richTextBox1);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.textBox3);
@@ -165,9 +173,9 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(87, 152);
+            this.richTextBox1.Location = new System.Drawing.Point(87, 153);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(218, 63);
+            this.richTextBox1.Size = new System.Drawing.Size(218, 62);
             this.richTextBox1.TabIndex = 81;
             this.richTextBox1.Text = "";
             // 
@@ -175,7 +183,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(4, 154);
+            this.label3.Location = new System.Drawing.Point(4, 155);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 16);
             this.label3.TabIndex = 80;
@@ -185,7 +193,7 @@
             // 
             this.textBox3.Location = new System.Drawing.Point(87, 126);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(218, 20);
+            this.textBox3.Size = new System.Drawing.Size(77, 20);
             this.textBox3.TabIndex = 79;
             // 
             // label2
@@ -251,6 +259,7 @@
             this.button6.TabIndex = 8;
             this.button6.Text = "SUBMIT";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label20
             // 
@@ -288,7 +297,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(87, 47);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(218, 21);
+            this.comboBox2.Size = new System.Drawing.Size(77, 21);
             this.comboBox2.TabIndex = 28;
             // 
             // label6
@@ -297,9 +306,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(4, 49);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 16);
+            this.label6.Size = new System.Drawing.Size(56, 16);
             this.label6.TabIndex = 26;
-            this.label6.Text = "Department";
+            this.label6.Text = "Program";
             // 
             // panel2
             // 
@@ -330,6 +339,54 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(314, 257);
             this.panel2.TabIndex = 82;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Tai Le", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(4, 186);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(77, 13);
+            this.label24.TabIndex = 94;
+            this.label24.Text = "Course Teacher";
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.Honeydew;
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Khaki;
+            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(106, 221);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(98, 25);
+            this.button5.TabIndex = 88;
+            this.button5.Text = "REMOVE";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Honeydew;
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Khaki;
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(210, 182);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(94, 21);
+            this.button4.TabIndex = 87;
+            this.button4.Text = "ADD";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // comboBox13
+            // 
+            this.comboBox13.FormattingEnabled = true;
+            this.comboBox13.Location = new System.Drawing.Point(86, 182);
+            this.comboBox13.Name = "comboBox13";
+            this.comboBox13.Size = new System.Drawing.Size(118, 21);
+            this.comboBox13.TabIndex = 93;
             // 
             // label19
             // 
@@ -392,36 +449,6 @@
             this.comboBox11.Size = new System.Drawing.Size(90, 21);
             this.comboBox11.TabIndex = 89;
             this.comboBox11.Tag = "";
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.Honeydew;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Khaki;
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(106, 221);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(98, 25);
-            this.button5.TabIndex = 88;
-            this.button5.Text = "REMOVE";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Honeydew;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Khaki;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(210, 182);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(94, 21);
-            this.button4.TabIndex = 87;
-            this.button4.Text = "ADD";
-            this.button4.UseVisualStyleBackColor = false;
             // 
             // comboBox5
             // 
@@ -745,6 +772,26 @@
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(557, 268);
             this.dataGridView2.TabIndex = 37;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "COURSE CODE";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "COURSE TITLE";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "CREDIT";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "DESCRIPTION";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
             // panel10
             // 
@@ -1150,43 +1197,49 @@
             this.dataGridViewTextBoxColumn8.HeaderText = "REMARKS";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             // 
-            // dataGridViewTextBoxColumn1
+            // comboBox14
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "COURSE CODE";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.comboBox14.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox14.FormattingEnabled = true;
+            this.comboBox14.Items.AddRange(new object[] {
+            "Theory",
+            "Lab"});
+            this.comboBox14.Location = new System.Drawing.Point(211, 126);
+            this.comboBox14.Name = "comboBox14";
+            this.comboBox14.Size = new System.Drawing.Size(94, 21);
+            this.comboBox14.TabIndex = 82;
             // 
-            // dataGridViewTextBoxColumn2
+            // label25
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "COURSE TITLE";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(170, 128);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(35, 16);
+            this.label25.TabIndex = 83;
+            this.label25.Text = "Type";
             // 
-            // dataGridViewTextBoxColumn3
+            // radioButton5
             // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "CREDIT";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton5.Location = new System.Drawing.Point(237, 48);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(70, 20);
+            this.radioButton5.TabIndex = 96;
+            this.radioButton5.Text = "Evening";
+            this.radioButton5.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewTextBoxColumn4
+            // radioButton6
             // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "DESCRIPTION";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // comboBox13
-            // 
-            this.comboBox13.FormattingEnabled = true;
-            this.comboBox13.Location = new System.Drawing.Point(86, 182);
-            this.comboBox13.Name = "comboBox13";
-            this.comboBox13.Size = new System.Drawing.Size(118, 21);
-            this.comboBox13.TabIndex = 93;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Tai Le", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(4, 186);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(77, 13);
-            this.label24.TabIndex = 94;
-            this.label24.Text = "Course Teacher";
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton6.Location = new System.Drawing.Point(170, 47);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(69, 20);
+            this.radioButton6.TabIndex = 95;
+            this.radioButton6.Text = "Regular";
+            this.radioButton6.UseVisualStyleBackColor = true;
             // 
             // Form3
             // 
@@ -1211,6 +1264,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "COURSE";
+            this.Load += new System.EventHandler(this.Form3_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel7.ResumeLayout(false);
@@ -1337,5 +1391,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.ComboBox comboBox13;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.ComboBox comboBox14;
+        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton radioButton6;
     }
 }

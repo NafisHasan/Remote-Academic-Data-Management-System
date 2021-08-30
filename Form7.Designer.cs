@@ -179,6 +179,7 @@
             this.button5.TabIndex = 46;
             this.button5.Text = "ADD";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // comboBox6
             // 
@@ -202,6 +203,7 @@
             this.button4.TabIndex = 44;
             this.button4.Text = "ADD";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label5
             // 
@@ -300,6 +302,7 @@
             this.button1.TabIndex = 37;
             this.button1.Text = "SEARCH";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // comboBox3
             // 
