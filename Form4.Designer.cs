@@ -29,16 +29,19 @@
         private void InitializeComponent()
         {
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox10 = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.comboBox11 = new System.Windows.Forms.ComboBox();
             this.comboBox12 = new System.Windows.Forms.ComboBox();
@@ -52,10 +55,19 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBox13 = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -84,18 +96,6 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label18 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox10 = new System.Windows.Forms.ComboBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox13 = new System.Windows.Forms.ComboBox();
             this.panel5.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -137,6 +137,40 @@
             this.panel5.Size = new System.Drawing.Size(385, 271);
             this.panel5.TabIndex = 13;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(212, 181);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(33, 16);
+            this.label18.TabIndex = 73;
+            this.label18.Text = "Year";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(251, 179);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.ShowUpDown = true;
+            this.dateTimePicker2.Size = new System.Drawing.Size(126, 21);
+            this.dateTimePicker2.TabIndex = 72;
+            // 
+            // comboBox10
+            // 
+            this.comboBox10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox10.FormattingEnabled = true;
+            this.comboBox10.Items.AddRange(new object[] {
+            "Fall",
+            "Spring",
+            "Summer"});
+            this.comboBox10.Location = new System.Drawing.Point(89, 179);
+            this.comboBox10.Name = "comboBox10";
+            this.comboBox10.Size = new System.Drawing.Size(117, 21);
+            this.comboBox10.TabIndex = 71;
+            this.comboBox10.Tag = "";
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -174,36 +208,21 @@
             this.comboBox9.Size = new System.Drawing.Size(288, 21);
             this.comboBox9.TabIndex = 66;
             // 
-            // label13
+            // button11
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(6, 127);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(21, 16);
-            this.label13.TabIndex = 65;
-            this.label13.Text = "ID";
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.Honeydew;
-            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Controls.Add(this.label11);
-            this.panel8.Location = new System.Drawing.Point(-11, -1);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(395, 38);
-            this.panel8.TabIndex = 64;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label11.Location = new System.Drawing.Point(132, 10);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(150, 17);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Studnet Information";
+            this.button11.BackColor = System.Drawing.Color.Honeydew;
+            this.button11.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.button11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Khaki;
+            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Location = new System.Drawing.Point(213, 243);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(164, 21);
+            this.button11.TabIndex = 62;
+            this.button11.Text = "RESET";
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button9
             // 
@@ -236,21 +255,36 @@
             this.button10.Text = "EXPORT TO EXCEL";
             this.button10.UseVisualStyleBackColor = false;
             // 
-            // button11
+            // label13
             // 
-            this.button11.BackColor = System.Drawing.Color.Honeydew;
-            this.button11.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.button11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Khaki;
-            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(213, 243);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(164, 21);
-            this.button11.TabIndex = 62;
-            this.button11.Text = "RESET";
-            this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(6, 127);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(21, 16);
+            this.label13.TabIndex = 65;
+            this.label13.Text = "ID";
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.Honeydew;
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Controls.Add(this.label11);
+            this.panel8.Location = new System.Drawing.Point(-11, -1);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(395, 38);
+            this.panel8.TabIndex = 64;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label11.Location = new System.Drawing.Point(132, 10);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(150, 17);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Studnet Information";
             // 
             // button12
             // 
@@ -395,6 +429,26 @@
             this.dataGridView2.Size = new System.Drawing.Size(975, 269);
             this.dataGridView2.TabIndex = 3;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "COURSE CODE";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "COURSE TITLE";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "CREDIT";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "REMARKS";
+            this.Column6.Name = "Column6";
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
@@ -414,6 +468,26 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(977, 296);
             this.dataGridView1.TabIndex = 2;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "COURSE CODE";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "COURSE TITLE";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "CREDIT";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "REMARKS";
+            this.Column4.Name = "Column4";
             // 
             // panel2
             // 
@@ -473,6 +547,15 @@
             this.panel1.Size = new System.Drawing.Size(385, 298);
             this.panel1.TabIndex = 8;
             // 
+            // comboBox13
+            // 
+            this.comboBox13.DropDownWidth = 200;
+            this.comboBox13.FormattingEnabled = true;
+            this.comboBox13.Location = new System.Drawing.Point(249, 235);
+            this.comboBox13.Name = "comboBox13";
+            this.comboBox13.Size = new System.Drawing.Size(71, 21);
+            this.comboBox13.TabIndex = 75;
+            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Honeydew;
@@ -525,6 +608,7 @@
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(290, 21);
             this.comboBox6.TabIndex = 72;
+            this.comboBox6.SelectedIndexChanged += new System.EventHandler(this.comboBox6_SelectedIndexChanged);
             // 
             // button6
             // 
@@ -540,6 +624,7 @@
             this.button6.TabIndex = 8;
             this.button6.Text = "SUBMIT";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label19
             // 
@@ -559,6 +644,7 @@
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(290, 21);
             this.comboBox7.TabIndex = 70;
+            this.comboBox7.SelectedIndexChanged += new System.EventHandler(this.comboBox7_SelectedIndexChanged);
             // 
             // label20
             // 
@@ -584,6 +670,7 @@
             this.button5.TabIndex = 46;
             this.button5.Text = "ADD";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -627,9 +714,6 @@
             // 
             this.comboBox1.DropDownWidth = 200;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "1234-test itmes for testing",
-            "1456-anothetr test item for testing"});
             this.comboBox1.Location = new System.Drawing.Point(249, 210);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(71, 21);
@@ -671,6 +755,7 @@
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(117, 21);
             this.comboBox5.TabIndex = 34;
+            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -787,92 +872,6 @@
             this.panel3.Size = new System.Drawing.Size(979, 298);
             this.panel3.TabIndex = 10;
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(212, 181);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(33, 16);
-            this.label18.TabIndex = 73;
-            this.label18.Text = "Year";
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(251, 179);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.ShowUpDown = true;
-            this.dateTimePicker2.Size = new System.Drawing.Size(126, 21);
-            this.dateTimePicker2.TabIndex = 72;
-            // 
-            // comboBox10
-            // 
-            this.comboBox10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox10.FormattingEnabled = true;
-            this.comboBox10.Items.AddRange(new object[] {
-            "Fall",
-            "Spring",
-            "Summer"});
-            this.comboBox10.Location = new System.Drawing.Point(89, 179);
-            this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(117, 21);
-            this.comboBox10.TabIndex = 71;
-            this.comboBox10.Tag = "";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "COURSE CODE";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "COURSE TITLE";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "CREDIT";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "REMARKS";
-            this.Column4.Name = "Column4";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "COURSE CODE";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "COURSE TITLE";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "CREDIT";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "REMARKS";
-            this.Column6.Name = "Column6";
-            // 
-            // comboBox13
-            // 
-            this.comboBox13.DropDownWidth = 200;
-            this.comboBox13.FormattingEnabled = true;
-            this.comboBox13.Items.AddRange(new object[] {
-            "1234-test itmes for testing",
-            "1456-anothetr test item for testing"});
-            this.comboBox13.Location = new System.Drawing.Point(249, 235);
-            this.comboBox13.Name = "comboBox13";
-            this.comboBox13.Size = new System.Drawing.Size(71, 21);
-            this.comboBox13.TabIndex = 75;
-            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -893,6 +892,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "REGISTRATION";
+            this.Load += new System.EventHandler(this.Form4_Load);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel8.ResumeLayout(false);
