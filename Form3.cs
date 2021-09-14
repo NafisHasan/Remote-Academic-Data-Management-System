@@ -54,19 +54,24 @@ namespace Student_Record
 
         private void button6_Click(object sender, EventArgs e)
         {
-            string shift = null;
-            if (radioButton5.Checked == true)
-            {
-                shift = radioButton5.Text;
-            }
-            else if (radioButton6.Checked == true)
-            {
-                shift = radioButton6.Text;
-            }
             dbConnect = new DBConnect();
-            
-            dbConnect.Insert("insert into course (courseCode,courseTitle,credit,type,shortDesc) values ('"+textBox2.Text+ "','"+textBox1.Text+ "',"+ textBox3.Text+ ",'"+ this.comboBox14.GetItemText(this.comboBox14.SelectedItem)+ "','"+ richTextBox1.Text+"')");
-            dbConnect.Insert("insert into CourseProgram (programId,courseCode) values ((select programId from program where name='"+ this.comboBox2.GetItemText(this.comboBox2.SelectedItem) + "' and shift='"+shift+"'),'"+ textBox2.Text + "')");
+            List<string>[] list;
+            list = dbConnect.Select("SELECT EXISTS(select courseCode from course where courseCode='" + textBox2.Text + "')", 1);
+            if(list[0][0]=="0")
+                dbConnect.Insert("insert into course (courseCode,courseTitle,credit,type,shortDesc) values ('" + textBox2.Text + "','" + textBox1.Text + "'," + textBox3.Text + ",'" + this.comboBox14.GetItemText(this.comboBox14.SelectedItem) + "','" + richTextBox1.Text + "')");
+
+            if (checkBox1.Checked == true && checkBox2.Checked == true)
+            {
+                dbConnect.Insert("insert into CourseProgram (programId,courseCode) values ((select programId from program where name='" + this.comboBox2.GetItemText(this.comboBox2.SelectedItem) + "' and shift='" + checkBox1.Text + "'),'" + textBox2.Text + "'),((select programId from program where name='" + this.comboBox2.GetItemText(this.comboBox2.SelectedItem) + "' and shift='" + checkBox2.Text + "'),'" + textBox2.Text + "')");
+            }
+            else if (checkBox1.Checked == true && checkBox2.Checked == false)
+            {
+                dbConnect.Insert("insert into CourseProgram (programId,courseCode) values ((select programId from program where name='" + this.comboBox2.GetItemText(this.comboBox2.SelectedItem) + "' and shift='" + checkBox1.Text + "'),'" + textBox2.Text + "')");
+            }
+            else
+            {
+                dbConnect.Insert("insert into CourseProgram (programId,courseCode) values ((select programId from program where name='" + this.comboBox2.GetItemText(this.comboBox2.SelectedItem) + "' and shift='" + checkBox2.Text + "'),'" + textBox2.Text + "')");
+            }
 
         }
 
@@ -89,7 +94,7 @@ namespace Student_Record
             Int32 count = list[0].Count;
             for (int i = 0; i < count; i++)
             {
-                comboBox4.Items.Add(list[0][i]+"_"+list[1][i]+"_"+list[1][i]);
+                comboBox4.Items.Add(list[0][i]+"_"+list[1][i]+"_"+list[2][i]);
             }
             list = dbConnect.Select("select facultyMemberId,name,departmentId from facultymember", 3);
             count = list[0].Count;

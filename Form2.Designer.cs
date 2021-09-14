@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
@@ -63,7 +63,6 @@
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gpa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.credit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.avggpa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
@@ -80,7 +79,6 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -95,8 +93,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -107,7 +103,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
-
             this.SuspendLayout();
             // 
             // panel1
@@ -332,7 +327,7 @@
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Location = new System.Drawing.Point(354, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1016, 322);
+            this.panel2.Size = new System.Drawing.Size(1016, 294);
             this.panel2.TabIndex = 1;
             // 
             // panel4
@@ -366,14 +361,14 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.AliceBlue;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CourseCode,
@@ -385,13 +380,12 @@
             this.attendance,
             this.total,
             this.gpa,
-            this.credit,
-            this.avggpa});
+            this.credit});
             this.dataGridView1.Location = new System.Drawing.Point(-1, 32);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1015, 288);
+            this.dataGridView1.Size = new System.Drawing.Size(1015, 261);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DataGridView1_EditingControlShowing);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridView1_KeyDown);
@@ -467,22 +461,15 @@
             this.credit.MaxInputLength = 4;
             this.credit.Name = "credit";
             // 
-            // avggpa
-            // 
-            this.avggpa.FillWeight = 100.9749F;
-            this.avggpa.HeaderText = "AVARAGE GPA";
-            this.avggpa.MaxInputLength = 4;
-            this.avggpa.Name = "avggpa";
-            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.AliceBlue;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.panel6);
             this.panel5.Controls.Add(this.dataGridView2);
-            this.panel5.Location = new System.Drawing.Point(0, 328);
+            this.panel5.Location = new System.Drawing.Point(0, 336);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1370, 314);
+            this.panel5.Size = new System.Drawing.Size(1370, 338);
             this.panel5.TabIndex = 2;
             // 
             // panel6
@@ -525,13 +512,12 @@
             this.Column7,
             this.Column8,
             this.Column10,
-            this.Column9,
-            this.Column11});
+            this.Column9});
             this.dataGridView2.Location = new System.Drawing.Point(-1, 31);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(1369, 282);
+            this.dataGridView2.Size = new System.Drawing.Size(1369, 306);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DataGridView2_EditingControlShowing);
             this.dataGridView2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridView2_KeyDown);
@@ -597,11 +583,6 @@
             this.Column9.HeaderText = "CREDIT";
             this.Column9.Name = "Column9";
             // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "AVARAGE GPA";
-            this.Column11.Name = "Column11";
-            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Honeydew;
@@ -610,9 +591,9 @@
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(0, 647);
+            this.button1.Location = new System.Drawing.Point(610, 300);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 30);
+            this.button1.Size = new System.Drawing.Size(250, 30);
             this.button1.TabIndex = 3;
             this.button1.Text = "RESET";
             this.toolTip1.SetToolTip(this.button1, "Ctrl+R, Clear data from Student Information and Marks Obtained by Student section" +
@@ -628,7 +609,7 @@
             this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(183, 88);
+            this.button5.Location = new System.Drawing.Point(183, 92);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(157, 20);
             this.button5.TabIndex = 26;
@@ -645,7 +626,7 @@
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(6, 88);
+            this.button4.Location = new System.Drawing.Point(6, 92);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(171, 20);
             this.button4.TabIndex = 27;
@@ -662,11 +643,11 @@
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(140, 647);
+            this.button2.Location = new System.Drawing.Point(354, 300);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(134, 30);
+            this.button2.Size = new System.Drawing.Size(250, 30);
             this.button2.TabIndex = 4;
-            this.button2.Text = "CALCULATE";
+            this.button2.Text = "ADD MULTIPLE";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
@@ -678,9 +659,9 @@
             this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(280, 647);
+            this.button3.Location = new System.Drawing.Point(866, 300);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(166, 30);
+            this.button3.Size = new System.Drawing.Size(250, 30);
             this.button3.TabIndex = 5;
             this.button3.Text = "EXPORT TO DATABASE";
             this.button3.UseVisualStyleBackColor = false;
@@ -720,7 +701,7 @@
             this.panel8.Controls.Add(this.panel7);
             this.panel8.Location = new System.Drawing.Point(0, 209);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(348, 113);
+            this.panel8.Size = new System.Drawing.Size(348, 121);
             this.panel8.TabIndex = 6;
             // 
             // textBox2
@@ -767,29 +748,13 @@
             this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(452, 647);
+            this.button6.Location = new System.Drawing.Point(1122, 300);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(166, 30);
+            this.button6.Size = new System.Drawing.Size(236, 30);
             this.button6.TabIndex = 7;
             this.button6.Text = "EXPORT TO EXCEL";
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.Honeydew;
-            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Khaki;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(624, 647);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(166, 30);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "EXPORT TO EXCEL";
-            this.button7.UseVisualStyleBackColor = false;
-
             // 
             // Form2
             // 
@@ -797,7 +762,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Ivory;
             this.ClientSize = new System.Drawing.Size(1370, 725);
-            this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.button3);
@@ -832,7 +796,6 @@
             this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
- 
             this.ResumeLayout(false);
 
         }
@@ -868,6 +831,18 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.DataGridViewTextBoxColumn CourseCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn CourseName;
         private System.Windows.Forms.DataGridViewTextBoxColumn mid;
@@ -878,8 +853,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
         private System.Windows.Forms.DataGridViewTextBoxColumn gpa;
         private System.Windows.Forms.DataGridViewTextBoxColumn credit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn avggpa;
-        private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
@@ -892,19 +865,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-
     }
 }

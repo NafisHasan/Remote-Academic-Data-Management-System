@@ -165,23 +165,12 @@ namespace Student_Record
             FillStudentIdNameDepartment();
         }
 
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            dbConnect = new DBConnect();
-            List<string>[] list;
-            string id = this.comboBox1.GetItemText(this.comboBox1.SelectedItem);
-            list = dbConnect.Select("select name from student where studentId=" + id + ";", 1);
-            for (int i = 0; i < list[0].Count; i++)
-            {
-                comboBox6.SelectedIndex = comboBox6.FindStringExact(list[0][i]);
-            }
-        }
-
-        private void ComboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        private void filldatagrid()
         {
             dbConnect = new DBConnect();
             List<string>[] list;
             string year = dateTimePicker1.Text;
+            string id = comboBox1.Text;
             string semester = this.comboBox4.GetItemText(this.comboBox4.SelectedItem);
             string batch = this.comboBox5.GetItemText(this.comboBox5.SelectedItem);
             string program = this.comboBox3.GetItemText(this.comboBox3.SelectedItem);
@@ -196,7 +185,8 @@ namespace Student_Record
             }
             if (year != null && semester != null && batch != null && program != null && shift != null)
             {
-                list = dbConnect.Select("select courseCode, courseTitle, credit from course where courseCode in (select courseCode from offeredcourse where semesterId=(select semesterId from semester where name='" + semester + year + "') and batchId=" + batch + " and programId=(select programId from program where name='" + program + "' and shift='" + shift + "'));", 3);
+                list = dbConnect.Select("select courseCode, courseTitle, credit from course where courseCode in (select courseCode from registration where semesterId=(select semesterId from semester where name='" + semester + year + "') and studentId=" + id + ");", 3);
+                dataGridView1.Rows.Clear();
                 Int32 count = list[0].Count;
                 for (int i = 0; i < count; i++)
                 {
@@ -207,6 +197,28 @@ namespace Student_Record
                     dataGridView1.Rows[i].Cells[9].Value = list[2][i];
                 }
             }
+        }
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dbConnect = new DBConnect();
+            List<string>[] list;
+            string id = this.comboBox1.GetItemText(this.comboBox1.SelectedItem);
+            list = dbConnect.Select("select name from student where studentId=" + id + ";", 1);
+            for (int i = 0; i < list[0].Count; i++)
+            {
+                comboBox6.SelectedIndex = comboBox6.FindStringExact(list[0][i]);
+            }
+
+            if (comboBox4.SelectedIndex > -1)
+            {
+                filldatagrid();
+            }
+        }
+        
+
+        private void ComboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filldatagrid();
         }
         public Boolean Check(int row)
         {
@@ -315,7 +327,7 @@ namespace Student_Record
                 dataGridView2.Rows[number].Cells[9].Value = dataGridView1.Rows[i].Cells[7].Value;
                 dataGridView2.Rows[number].Cells[10].Value = dataGridView1.Rows[i].Cells[8].Value;
                 dataGridView2.Rows[number].Cells[11].Value = dataGridView1.Rows[i].Cells[9].Value;
-                dataGridView2.Rows[number].Cells[12].Value = dataGridView1.Rows[i].Cells[10].Value;
+                //dataGridView2.Rows[number].Cells[12].Value = dataGridView1.Rows[i].Cells[10].Value;
             }
         }
 
