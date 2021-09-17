@@ -59,6 +59,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -88,8 +90,6 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -474,6 +474,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(1012, 287);
             this.dataGridView1.TabIndex = 2;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "NAME";
+            this.Column2.Name = "Column2";
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Honeydew;
@@ -595,6 +605,7 @@
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(253, 21);
             this.comboBox8.TabIndex = 68;
+            this.comboBox8.SelectedIndexChanged += new System.EventHandler(this.comboBox8_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -614,6 +625,7 @@
             this.comboBox9.Name = "comboBox9";
             this.comboBox9.Size = new System.Drawing.Size(253, 21);
             this.comboBox9.TabIndex = 66;
+            this.comboBox9.SelectedIndexChanged += new System.EventHandler(this.comboBox9_SelectedIndexChanged);
             // 
             // label13
             // 
@@ -705,6 +717,7 @@
             this.button12.TabIndex = 61;
             this.button12.Text = "SEARCH";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // comboBox11
             // 
@@ -721,6 +734,7 @@
             this.comboBox12.Name = "comboBox12";
             this.comboBox12.Size = new System.Drawing.Size(100, 21);
             this.comboBox12.TabIndex = 59;
+            this.comboBox12.SelectedIndexChanged += new System.EventHandler(this.comboBox12_SelectedIndexChanged);
             // 
             // comboBox14
             // 
@@ -820,16 +834,6 @@
             // 
             this.dataGridViewTextBoxColumn2.HeaderText = "NAME";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "NAME";
-            this.Column2.Name = "Column2";
             // 
             // Form7
             // 

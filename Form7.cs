@@ -48,17 +48,19 @@ namespace Student_Record
         private void button3_Click(object sender, EventArgs e)
         {
             DGVPrinter printer = new DGVPrinter();
-            printer.ColumnWidths.Add("Column1", 200);
+            printer.ColumnWidths.Add("Column1", 70);
 
-            printer.Title = "DataGridView Report";
+            printer.Title = "Global University Bangladesh";
 
-            printer.SubTitle = "An Easy to Use DataGridView Printing Object \n testetstets";
+            String subtitle = "";
+            subtitle = "Department: "+comboBox2.Text +",  Program: " + comboBox3.Text+ "\n" +comboBox4.Text+"-"+dateTimePicker1.Text;
+            printer.SubTitle = subtitle;
 
             printer.SubTitleFormatFlags = StringFormatFlags.LineLimit |
 
                                           StringFormatFlags.NoClip;
 
-            printer.PageNumbers = true;
+            printer.PageNumbers = false;
 
             printer.PageNumberInHeader = false;
 
@@ -66,9 +68,10 @@ namespace Student_Record
 
             printer.HeaderCellAlignment = StringAlignment.Near;
 
-            printer.Footer = "Your Company Name Here";
+            printer.FooterAlignment = StringAlignment.Near;
+            printer.Footer = "_____________                                           ___________________________                                           __________________________\n    Prepared by                                                                  Compared by                                                                Prof. A.K.M. Mazibur Rahman\n                                                                           Asst. Controller of Examinations                                                   Controller of Examinations";
 
-            printer.FooterSpacing = 15;
+            printer.FooterSpacing = 20;
             printer.printDocument.DefaultPageSettings.Landscape = true;
 
 
@@ -161,6 +164,12 @@ namespace Student_Record
             }
             Int32 drc = dataGridView1.RowCount;
             Int32 dcc2 = dataGridView1.ColumnCount;
+            Double earnedgp=0.0;
+            Double totalcredit = 0.0;
+            dcc = dataGridView1.ColumnCount;
+            dataGridView1.Columns.Add("Column" + Convert.ToString(dcc + 1),"Total Credit");
+            dataGridView1.Columns.Add("Column" + Convert.ToString(dcc + 2), "GPE");
+            dataGridView1.Columns.Add("Column" + Convert.ToString(dcc + 3), "GPA");
             for (int i = 0; i < drc-1; i++)
             {
                 for (int j = 2; j < dcc2; j++)
@@ -171,8 +180,15 @@ namespace Student_Record
                         Double total = Math.Ceiling(Convert.ToDouble(list[0][0]));
                         Double gp = GP(total);
                         dataGridView1.Rows[i].Cells[j].Value = gp.ToString("0.00");
-                    
+                    list = dbConnect.Select("select credit from course where courseCode='" + courseCode + "'", 1);
+                    earnedgp = earnedgp + (gp * Convert.ToDouble(list[0][0]));
+                    totalcredit = totalcredit + Convert.ToDouble(list[0][0]);
                 }
+                dataGridView1.Rows[i].Cells[dcc].Value = totalcredit.ToString("0.00");
+                dataGridView1.Rows[i].Cells[dcc+1].Value = earnedgp.ToString("0.00");
+                dataGridView1.Rows[i].Cells[dcc + 2].Value = (earnedgp/totalcredit).ToString("0.00");
+                earnedgp = 0.0;
+                totalcredit = 0.0;
             }
         }
 
@@ -212,6 +228,107 @@ namespace Student_Record
                 return 2;
             else
                 return 3;
+        }
+        private void FillStudentIdNameDepartment()
+        {
+            string batch = this.comboBox12.GetItemText(this.comboBox12.SelectedItem);
+            string program = this.comboBox11.GetItemText(this.comboBox11.SelectedItem);
+            string shift = null;
+            if (radioButton3.Checked == true)
+            {
+                shift = radioButton3.Text;
+            }
+            else if (radioButton4.Checked == true)
+            {
+                shift = radioButton4.Text;
+            }
+
+            dbConnect = new DBConnect();
+            List<string>[] list;
+            if (batch != null && program != null && shift != null)
+            {
+                comboBox9.Items.Clear();
+                comboBox8.Items.Clear();
+                list = dbConnect.Select("select studentId,name from student where batchId=" + batch + " and programId=(select programId from program where name='" + program + "' and shift='" + shift + "');", 2);
+                for (int i = 0; i < list[0].Count; i++)
+                {
+                    comboBox9.Items.Add(list[0][i]);
+                    comboBox8.Items.Add(list[1][i]);
+                }
+
+                /*list = dbConnect.Select("select name from department where departmentId=(select distinct departmentId from program where name='" + program + "')", 1);
+                for (int i = 0; i < list[0].Count; i++)
+                {
+                    comboBox2.SelectedIndex = comboBox2.FindStringExact(list[0][i]);
+                }*/
+                /*list = dbConnect.Select("select name from student where batchId=" + batch + " and programId=(select programId from program where name='" + program + "' and shift='" + shift + "');", 1);
+                for (int i = 0; i < list[0].Count; i++)
+                {
+                    comboBox8.Items.Add(list[0][i]);
+                }*/
+                
+            }
+        }
+
+        private void comboBox12_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillStudentIdNameDepartment();
+        }
+
+        private void comboBox9_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dbConnect = new DBConnect();
+            List<string>[] list;
+            string id = this.comboBox9.GetItemText(this.comboBox9.SelectedItem);
+            list = dbConnect.Select("select name from student where studentId=" + id + ";", 1);
+            for (int i = 0; i < list[0].Count; i++)
+            {
+                comboBox8.SelectedIndex = comboBox8.FindStringExact(list[0][i]);
+            }
+        }
+
+        private void comboBox8_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dbConnect = new DBConnect();
+            List<string>[] list;
+            string name = this.comboBox9.GetItemText(this.comboBox9.SelectedItem);
+            list = dbConnect.Select("select studentId from student where name='" + name + "';", 1);
+            for (int i = 0; i < list[0].Count; i++)
+            {
+                comboBox8.SelectedIndex = comboBox8.FindStringExact(list[0][i]);
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            string batch = this.comboBox12.GetItemText(this.comboBox12.SelectedItem);
+            Int32 sem1= Convert.ToInt32(this.comboBox10.GetItemText(this.comboBox10.SelectedItem));
+            Int32 sem2 = Convert.ToInt32(this.comboBox13.GetItemText(this.comboBox13.SelectedItem));
+            Int32 semrange = 0;
+            if (sem2>=sem1)
+                semrange = sem2 -sem1+1;
+            else
+                semrange = sem1 - sem2 + 1;
+            Int32 semyear = Convert.ToInt32("20" + batch[0]+batch[1]);
+            Int32 semsem = Convert.ToInt32( batch[2].ToString());
+            Int32 count = 0;
+            String[] sems = new String[12];
+            
+            for(int j=0; j<12;j++)
+            {
+                sems[count] = semyear.ToString()+semsem.ToString();
+                if (semsem == 3)
+                {
+                    semyear += 1;
+                    semsem = 1;
+                }
+                else
+                    semsem += 1;
+                    
+                    count++;
+            }
+            count = 0;
+
         }
     }
     

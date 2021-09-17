@@ -87,22 +87,23 @@ namespace Student_Record
             {
                 comboBox7.Items.Clear();
                 comboBox6.Items.Clear();
-                list = dbConnect.Select("select studentId from student where batchId=" + batch + " and programId=(select programId from program where name='" + program + "' and shift='" + shift + "');", 1);
+                list = dbConnect.Select("select studentId,name from student where batchId=" + batch + " and programId=(select programId from program where name='" + program + "' and shift='" + shift + "');", 2);
                 for (int i = 0; i < list[0].Count; i++)
                 {
                     comboBox7.Items.Add(list[0][i]);
+                    comboBox6.Items.Add(list[1][i]);
                 }
 
                 /*list = dbConnect.Select("select name from department where departmentId=(select distinct departmentId from program where name='" + program + "')", 1);
                 for (int i = 0; i < list[0].Count; i++)
                 {
                     comboBox2.SelectedIndex = comboBox2.FindStringExact(list[0][i]);
-                }*/
+                }
                 list = dbConnect.Select("select name from student where batchId=" + batch + " and programId=(select programId from program where name='" + program + "' and shift='" + shift + "');", 1);
                 for (int i = 0; i < list[0].Count; i++)
                 {
                     comboBox6.Items.Add(list[0][i]);
-                }
+                }*/
                 String year = dateTimePicker1.Text;
                 String semester = this.comboBox4.GetItemText(this.comboBox4.SelectedItem);
                 if (semester == "Spring")
