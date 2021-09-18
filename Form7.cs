@@ -304,19 +304,14 @@ namespace Student_Record
             string batch = this.comboBox12.GetItemText(this.comboBox12.SelectedItem);
             Int32 sem1= Convert.ToInt32(this.comboBox10.GetItemText(this.comboBox10.SelectedItem));
             Int32 sem2 = Convert.ToInt32(this.comboBox13.GetItemText(this.comboBox13.SelectedItem));
-            Int32 semrange = 0;
-            if (sem2>=sem1)
-                semrange = sem2 -sem1+1;
-            else
-                semrange = sem1 - sem2 + 1;
             Int32 semyear = Convert.ToInt32("20" + batch[0]+batch[1]);
             Int32 semsem = Convert.ToInt32( batch[2].ToString());
-            Int32 count = 0;
+            
             String[] sems = new String[12];
             
             for(int j=0; j<12;j++)
             {
-                sems[count] = semyear.ToString()+semsem.ToString();
+                sems[j] = semyear.ToString()+semsem.ToString();
                 if (semsem == 3)
                 {
                     semyear += 1;
@@ -325,9 +320,15 @@ namespace Student_Record
                 else
                     semsem += 1;
                     
-                    count++;
             }
-            count = 0;
+            dbConnect = new DBConnect();
+            List<string>[] list;
+            for (int i=sem1;i<=sem2;i++)
+            {
+                list = dbConnect.Select("select registration.courseCode,course.courseTitle,(ifnull(attendance,0)+ifnull(assignment,0)+ifnull(classMark,0)+ifnull(midViva,0)+ifnull(final,0))as total from registration INNER JOIN course ON registration.courseCode=course.courseCode where studentId=" + comboBox9.Text + " and semesterId=" + sems[i-1], 2);
+                
+
+            }
 
         }
     }
