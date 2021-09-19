@@ -19,11 +19,11 @@ namespace Student_Record
         }
         public void Clear()
         {
-            comboBox5.ResetText();
+            //comboBox5.ResetText();
             comboBox6.ResetText();
             comboBox1.ResetText();
-            comboBox2.ResetText();
-            comboBox3.ResetText();
+            //comboBox2.ResetText();
+            //comboBox3.ResetText();
             comboBox4.SelectedIndex = -1;
             if (radioButton1.Checked || radioButton2.Checked)
             {
@@ -171,7 +171,8 @@ namespace Student_Record
             List<string>[] list;
             string year = dateTimePicker1.Text;
             string id = comboBox1.Text;
-            string semester = this.comboBox4.GetItemText(this.comboBox4.SelectedItem);
+            string semester = "XYZ";
+            semester = comboBox4.Text;
             string batch = this.comboBox5.GetItemText(this.comboBox5.SelectedItem);
             string program = this.comboBox3.GetItemText(this.comboBox3.SelectedItem);
             string shift = null;
@@ -371,7 +372,7 @@ namespace Student_Record
         private void Button3_Click(object sender, EventArgs e)
         {
 
-            int numRows1 = dataGridView1.Rows.Count;
+            int numRows1 = dataGridView2.Rows.Count;
             dbConnect = new DBConnect();
             if (numRows1 > 1)
             {
@@ -418,7 +419,7 @@ namespace Student_Record
                     dbConnect.Update("UPDATE registration SET attendance=" + attendance + ", assignment=" + assignment + ", classMark=" + classMark + ", midViva=" + midViva + " , final=" + final + " where studentId=" + studentId + " and courseCode='" + courseCode + "';");
                 }
             }
-
+            dataGridView2.Rows.Clear();
         }
 
         private void ComboBox5_SelectedIndexChanged(object sender, EventArgs e)
@@ -572,7 +573,7 @@ namespace Student_Record
                 }
             }
             // save the application  
-            workbook.SaveAs("G:\\output.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            //workbook.SaveAs("G:\\output.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
             // Exit from the application  
             app.Quit();
         }

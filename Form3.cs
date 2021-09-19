@@ -90,12 +90,15 @@ namespace Student_Record
             String program = this.comboBox3.GetItemText(this.comboBox3.SelectedItem);
             
             List<string>[] list;
+            comboBox4.Items.Clear();
             list = dbConnect.Select("select courseCode,courseTitle,credit from course where courseCode in (select courseCode from CourseProgram where programId=(select programId from program where name='"+program+"' and shift='"+shift+"'))", 3);
             Int32 count = list[0].Count;
             for (int i = 0; i < count; i++)
             {
                 comboBox4.Items.Add(list[0][i]+"_"+list[1][i]+"_"+list[2][i]);
             }
+            comboBox13.Items.Clear();
+            comboBox13.Items.Add("TBD");
             list = dbConnect.Select("select facultyMemberId,name,departmentId from facultymember", 3);
             count = list[0].Count;
             for (int i = 0; i < count; i++)
@@ -145,12 +148,22 @@ namespace Student_Record
             {
                 for (int i = 0; i < numRows1 - 1; i++)
                 {
-                    string[] subs = Convert.ToString(dataGridView1.Rows[i].Cells[3].Value).Split('-');
-
-                    dbConnect.Insert("insert into offeredcourse(courseCode, batchId, semesterId, programId, facultyMemberId) values('"+dataGridView1.Rows[i].Cells[0].Value.ToString()+"',"+Batch+","+semester+ ",(select programId from program where name='" + program + "' and shift='" + shift + "'),"+subs[0]+")");
+                    
+                     string[] subs = Convert.ToString(dataGridView1.Rows[i].Cells[3].Value).Split('-');
+                    
+                     if(subs[0]=="TBD" || subs[0]=="")
+                        dbConnect.Insert("insert into offeredcourse(courseCode, batchId, semesterId, programId) values('" + dataGridView1.Rows[i].Cells[0].Value.ToString() + "'," + Batch + "," + semester + ",(select programId from program where name='" + program + "' and shift='" + shift + "'))");
+                     else
+                        dbConnect.Insert("insert into offeredcourse(courseCode, batchId, semesterId, programId, facultyMemberId) values('"+dataGridView1.Rows[i].Cells[0].Value.ToString()+"',"+Batch+","+semester+ ",(select programId from program where name='" + program + "' and shift='" + shift + "'),"+subs[0]+")");
+                    //Console.WriteLine("insert into offeredcourse(courseCode, batchId, semesterId, programId, facultyMemberId) values('" + dataGridView1.Rows[i].Cells[0].Value.ToString() + "'," + Batch + "," + semester + ",(select programId from program where name='" + program + "' and shift='" + shift + "')," + subs[0] + ")");
                     
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
         }
     }
     

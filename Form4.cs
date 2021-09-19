@@ -114,12 +114,14 @@ namespace Student_Record
                     semester = "3";
 
                 semester = year + semester;
+                comboBox1.Items.Clear();
                 list = dbConnect.Select("select courseCode,courseTitle,credit from course where courseCode in (select courseCode from offeredcourse where batchId="+batch+" and semesterId="+semester+" and programId=(select programId from program where name='"+program+"' and shift='"+shift+"'))", 3);
                 for (int i = 0; i < list[0].Count; i++)
                 {
                     comboBox1.Items.Add(list[0][i] + "_" + list[1][i] + "_" + list[2][i]);
                 }
                 String Department= this.comboBox2.GetItemText(this.comboBox2.SelectedItem);
+                comboBox13.Items.Clear();
                 list = dbConnect.Select("select courseCode,courseTitle,credit from course where courseCode in (select courseCode from offeredcourse where semesterId=" + semester + " and programId in(select programId from department where name='" + Department + "'))", 3);
                 for (int i = 0; i < list[0].Count; i++)
                 {
@@ -177,7 +179,8 @@ namespace Student_Record
             String program = this.comboBox3.GetItemText(this.comboBox3.SelectedItem);
             String Batch = this.comboBox5.GetItemText(this.comboBox5.SelectedItem);
             String year = dateTimePicker1.Text;
-            String semester = this.comboBox11.GetItemText(this.comboBox11.SelectedItem);
+            String semester = comboBox4.Text;
+            
             if (semester == "Spring")
                 semester = "1";
             else if (semester == "Summer")
@@ -201,6 +204,11 @@ namespace Student_Record
                     
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
         }
     }
 }

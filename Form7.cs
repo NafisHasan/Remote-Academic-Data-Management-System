@@ -323,13 +323,112 @@ namespace Student_Record
             }
             dbConnect = new DBConnect();
             List<string>[] list;
-            for (int i=sem1;i<=sem2;i++)
+            Double ttcredit = 0.0;
+            Double cgpa = 0.0;
+            for (int i = sem1; i <= sem2; i++)
             {
-                list = dbConnect.Select("select registration.courseCode,course.courseTitle,(ifnull(attendance,0)+ifnull(assignment,0)+ifnull(classMark,0)+ifnull(midViva,0)+ifnull(final,0))as total from registration INNER JOIN course ON registration.courseCode=course.courseCode where studentId=" + comboBox9.Text + " and semesterId=" + sems[i-1], 2);
+                list = dbConnect.Select("select registration.courseCode,course.courseTitle,(ifnull(attendance,0)+ifnull(assignment,0)+ifnull(classMark,0)+ifnull(midViva,0)+ifnull(final,0))as total,course.credit from registration INNER JOIN course ON registration.courseCode=course.courseCode where studentId=" + comboBox9.Text + " and semesterId=" + sems[i - 1], 4);
+                Int32 count = list[0].Count;
                 
+                Int32 lopper = 0;
+                Double earnedgp = 0.0;
+                Double totalcredit = 0.0;
+                String semester = null;
+                if (sems[i - 1][4] == '1')
+                    semester = "Spring";
+                else if (sems[i - 1][4] == '2')
+                    semester = "Summer";
+                else
+                    semester = "Fall";
 
+
+                dataGridView2.Rows.Add();
+                Int32 dgvcount = dataGridView2.RowCount;
+                dataGridView2.Rows[dgvcount - 2].Cells[1].Value = "Semester:";
+                dataGridView2.Rows[dgvcount - 2].Cells[2].Value = semester+"-"+ sems[i - 1][0] + sems[i - 1][1] + sems[i - 1][2] + sems[i - 1][3];
+                dgvcount = dataGridView2.RowCount;
+                for (int j = dgvcount - 1; j < dgvcount + count - 1; j++)
+                {
+                    //Console.WriteLine(j);
+                    //Console.WriteLine(dgvcount + count - 1);
+                    dataGridView2.Rows.Add();
+                    dataGridView2.Rows[j].Cells[0].Value = list[0][lopper];
+                    dataGridView2.Rows[j].Cells[1].Value = list[1][lopper];
+                    dataGridView2.Rows[j].Cells[3].Value = list[3][lopper];
+                    Double total = Math.Ceiling(Convert.ToDouble(list[2][lopper]));
+                    Double gp = GP(total);
+                    earnedgp += (gp * Convert.ToDouble(list[3][lopper]));
+                    totalcredit += Convert.ToDouble(list[3][lopper]);
+                    dataGridView2.Rows[j].Cells[2].Value = gp.ToString("0.00"); ;
+                    lopper++;
+                }
+                ttcredit += totalcredit;
+                cgpa += earnedgp;
+                dataGridView2.Rows.Add();
+                dataGridView2.Rows[dgvcount + count - 1].Cells[0].Value = "Total Credit";
+                dataGridView2.Rows[dgvcount + count - 1].Cells[1].Value = totalcredit.ToString("0.00");
+                dataGridView2.Rows[dgvcount + count - 1].Cells[2].Value = "GPA:";
+                dataGridView2.Rows[dgvcount + count - 1].Cells[3].Value = (earnedgp / totalcredit).ToString("0.00");
             }
+            dataGridView2.Rows.Add();
+            dataGridView2.Rows.Add();
+            Int32 dgvcount2 = dataGridView2.RowCount;
+            dataGridView2.Rows[dgvcount2 - 2].Cells[0].Value = "Earned Credit:";
+            dataGridView2.Rows[dgvcount2 - 2].Cells[1].Value = ttcredit.ToString("0.00"); ;
+            dataGridView2.Rows[dgvcount2 - 2].Cells[2].Value = "CGPA:";
+            dataGridView2.Rows[dgvcount2 - 2].Cells[3].Value = (cgpa / ttcredit).ToString("0.00");
 
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            dataGridView2.Rows.Clear();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            string shift = null;
+            if (radioButton3.Checked == true)
+            {
+                shift = radioButton3.Text;
+            }
+            else if (radioButton4.Checked == true)
+            {
+                shift = radioButton4.Text;
+            }
+            DGVPrinter printer = new DGVPrinter();
+            printer.ColumnWidths.Add("data1", 200);
+            //printer.ColumnWidths.Add("data2", 200);
+            printer.ColumnWidths.Add("data3", 200);
+            printer.ColumnWidths.Add("data4", 200);
+
+            printer.Title = "Global University Bangladesh";
+
+            String subtitle = "";
+            subtitle = "Department: " + comboBox14.Text + ",  Program: " + comboBox11.Text + "("+shift+")\n Student ID:" + comboBox9.Text + " Name:" + comboBox8.Text + " Batch:" + comboBox12.Text;
+            printer.SubTitle = subtitle;
+
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit |
+
+                                          StringFormatFlags.NoClip;
+
+            printer.PageNumbers = false;
+
+            printer.PageNumberInHeader = false;
+
+            printer.PorportionalColumns = true;
+
+            printer.HeaderCellAlignment = StringAlignment.Near;
+
+            printer.FooterAlignment = StringAlignment.Near;
+            printer.Footer = "_____________                                           ___________________________                                           __________________________\n    Prepared by                                                                  Compared by                                                                Prof. A.K.M. Mazibur Rahman\n                                                                           Asst. Controller of Examinations                                                   Controller of Examinations";
+
+            printer.FooterSpacing = 20;
+            printer.printDocument.DefaultPageSettings.Landscape = true;
+
+
+
+            printer.PrintDataGridView(dataGridView2);
         }
     }
     
