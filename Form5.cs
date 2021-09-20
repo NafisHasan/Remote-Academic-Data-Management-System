@@ -69,9 +69,9 @@ namespace Student_Record
                 {
 
                     if (dataGridView3.Rows[i].Cells[5].Value.ToString() == "CLASS")
-                        dbConnect.Insert("update education set exam='"+ dataGridView3.Rows[i].Cells[0].Value.ToString() + "', year="+ dataGridView3.Rows[i].Cells[1].Value.ToString() + ",rollID='"+ dataGridView3.Rows[i].Cells[2].Value.ToString() + "', department='"+ dataGridView3.Rows[i].Cells[3].Value.ToString() + "', baord='"+ dataGridView3.Rows[i].Cells[4].Value.ToString() + "', resultType='"+ dataGridView3.Rows[i].Cells[5].Value.ToString() + "', resultClass="+ dataGridView3.Rows[i].Cells[6].Value.ToString() + ", outOf="+ dataGridView3.Rows[i].Cells[7].Value.ToString() + " where educationId=" + comboBox12.Text);
+                        dbConnect.Insert("update education set exam='"+ dataGridView3.Rows[i].Cells[0].Value.ToString() + "', year="+ dataGridView3.Rows[i].Cells[1].Value.ToString() + ",rollID='"+ dataGridView3.Rows[i].Cells[2].Value.ToString() + "', department='"+ dataGridView3.Rows[i].Cells[3].Value.ToString() + "', baord='"+ dataGridView3.Rows[i].Cells[4].Value.ToString() + "', resultType='"+ dataGridView3.Rows[i].Cells[5].Value.ToString() + "', resultClass="+ dataGridView3.Rows[i].Cells[6].Value.ToString() + ", outOf="+ dataGridView3.Rows[i].Cells[7].Value.ToString() + " where educationId=" + comboBox12.Text+" and exam='"+ dataGridView3.Rows[i].Cells[0].Value.ToString() + "'");
                     else if (dataGridView3.Rows[i].Cells[5].Value.ToString() == "GPA")
-                        dbConnect.Insert("update education set exam='" + dataGridView3.Rows[i].Cells[0].Value.ToString() + "', year=" + dataGridView3.Rows[i].Cells[1].Value.ToString() + ",rollID='" + dataGridView3.Rows[i].Cells[2].Value.ToString() + "', department='" + dataGridView3.Rows[i].Cells[3].Value.ToString() + "', baord='" + dataGridView3.Rows[i].Cells[4].Value.ToString() + "', resultType='" + dataGridView3.Rows[i].Cells[5].Value.ToString() + "', resultGPA=" + dataGridView3.Rows[i].Cells[6].Value.ToString() + ", outOf=" + dataGridView3.Rows[i].Cells[7].Value.ToString() + " where educationId=" + comboBox12.Text);
+                        dbConnect.Insert("update education set exam='" + dataGridView3.Rows[i].Cells[0].Value.ToString() + "', year=" + dataGridView3.Rows[i].Cells[1].Value.ToString() + ",rollID='" + dataGridView3.Rows[i].Cells[2].Value.ToString() + "', department='" + dataGridView3.Rows[i].Cells[3].Value.ToString() + "', baord='" + dataGridView3.Rows[i].Cells[4].Value.ToString() + "', resultType='" + dataGridView3.Rows[i].Cells[5].Value.ToString() + "', resultGPA=" + dataGridView3.Rows[i].Cells[6].Value.ToString() + ", outOf=" + dataGridView3.Rows[i].Cells[7].Value.ToString() + " where educationId=" + comboBox12.Text + " and exam='" + dataGridView3.Rows[i].Cells[0].Value.ToString() + "'");
 
 
                 }
@@ -308,13 +308,13 @@ namespace Student_Record
                 dataGridView2.Rows.Add();
                 dataGridView2.Rows[i].Cells[0].Value = s1[i];
                 dataGridView2.Rows[i].Cells[1].Value = list[i][0];
-                //if (i == 15)
-               // {
+                if (i == 15)
+                {
                    // Console.WriteLine(list[i][0]);
-                    //DateTime asDate = DateTime.ParseExact(list[i][0], "dd/MM/yyyy hh:mm:ss ", System.Globalization.CultureInfo.InvariantCulture);
+                    DateTime asDate = DateTime.Parse(list[i][0]);
                     
-                    //dataGridView2.Rows[i].Cells[1].Value = asDate.ToString("yyyy-MM-dd");
-                //}
+                    dataGridView2.Rows[i].Cells[1].Value = asDate.ToString("yyyy-MM-dd");
+                }
             }
             String[] s2 = new String[4] { "Name", "Relation With Student", "Contact Number", "Present Address" };
             list = dbConnect.Select("select name,relationWithStudent,contact,mailingAddress from guardian where studentId=" + comboBox12.Text, 4);
