@@ -23,7 +23,7 @@ namespace Student_Record
                 int description;
                 return InternetGetConnectedState(out description, 0);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -165,8 +165,21 @@ namespace Student_Record
 
             if (this.OpenConnection() == true)
             {
+                //create command and assign the query and connection from the constructor
                 MySqlCommand cmd = new MySqlCommand(Q, connection);
-                cmd.ExecuteNonQuery();
+
+                //Execute command
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                //close connection
                 this.CloseConnection();
             }
         }
