@@ -16,6 +16,7 @@ namespace Student_Record
         {
             InitializeComponent();
         }
+        Form8 fm8 = null;
         Form7 fm7 = null;
         Form6 fm6 = null;
         Form5 fm5 = null;
@@ -237,6 +238,26 @@ namespace Student_Record
                 fm2.Focus();
             }
 
+        }
+
+        private void cONFIGURATIONToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (fm8 == null || fm8.Text == "")
+            {
+                fm8 = new Form8
+                {
+                    MdiParent = this,
+                    Dock = DockStyle.Fill
+                };
+                fm8.Show();
+            }
+            else if (CheckOpened(fm8.Text))
+            {
+                fm8.WindowState = FormWindowState.Normal;
+                fm8.Dock = DockStyle.Fill;
+                //fm8.Show();
+                fm8.Focus();
+            }
         }
 
         /*protected override void OnFormClosing(FormClosingEventArgs e)

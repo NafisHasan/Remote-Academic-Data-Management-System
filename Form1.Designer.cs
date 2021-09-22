@@ -55,8 +55,8 @@
             this.fEESToolStripMenuItem,
             this.hRMToolStripMenuItem,
             this.uSERToolStripMenuItem,
-            this.cONFIGURATIONToolStripMenuItem,
             this.aBOUTToolStripMenuItem,
+            this.cONFIGURATIONToolStripMenuItem,
             this.eXITToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -142,15 +142,16 @@
             // uSERToolStripMenuItem
             // 
             this.uSERToolStripMenuItem.Name = "uSERToolStripMenuItem";
-            this.uSERToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.uSERToolStripMenuItem.Text = "USER";
+            this.uSERToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
+            this.uSERToolStripMenuItem.Text = "CONFIGURATION";
             this.uSERToolStripMenuItem.Click += new System.EventHandler(this.USERToolStripMenuItem_Click);
             // 
             // cONFIGURATIONToolStripMenuItem
             // 
             this.cONFIGURATIONToolStripMenuItem.Name = "cONFIGURATIONToolStripMenuItem";
-            this.cONFIGURATIONToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
-            this.cONFIGURATIONToolStripMenuItem.Text = "CONFIGURATION";
+            this.cONFIGURATIONToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.cONFIGURATIONToolStripMenuItem.Text = "LOGOUT";
+            this.cONFIGURATIONToolStripMenuItem.Click += new System.EventHandler(this.cONFIGURATIONToolStripMenuItem_Click);
             // 
             // aBOUTToolStripMenuItem
             // 
