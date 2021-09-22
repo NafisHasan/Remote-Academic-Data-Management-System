@@ -12,7 +12,7 @@ using System.Windows.Forms.VisualStyles;
 using System.IO;
 using System.Diagnostics;
 
-
+//crdit www.codeproject.com/Articles/18042/Another-DataGridView-Printer
 //[module:CLSCompliant(true)]
 namespace DGVPrinterHelper //AllocationRequest
 {    

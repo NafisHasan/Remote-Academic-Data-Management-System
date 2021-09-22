@@ -1,5 +1,18 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Student_Record.Properties" GeneratedClassName="Settings">
   <Profiles />
-  <Settings />
+  <Settings>
+    <Setting Name="serverIP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAARwOaZZFBwUyBvdMiF3L66QAAAAACAAAAAAAQZgAAAAEAACAAAABq/175SnJzN3Cy9KpQ+SMdDG3/61emO5JBkzyMkgt1TQAAAAAOgAAAAAIAACAAAADRWNZVYkbODKjFxsdcewoduWVz5HmQ7vqVoYkJKQSD/CAAAABG7skjTwwNscOTWtVpIqAPyj3kzZv3aWa8jTBTj/ywhUAAAADuWWzZ+WhdWH77K+qLQFAPujxmRAtBirZ48pMO3iU4E8wVC+xZzEgBsIl+NcNHTOpXiz5FqXd8BMG1pPQ7T3m0</Value>
+    </Setting>
+    <Setting Name="databaseName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GUB</Value>
+    </Setting>
+    <Setting Name="serverUID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAARwOaZZFBwUyBvdMiF3L66QAAAAACAAAAAAAQZgAAAAEAACAAAADM9QhzCcZnDJ/eESl2TWnuKhe1wl3os6diRxkdoiJgsgAAAAAOgAAAAAIAACAAAACJ2bNYTZtNnRThz0081R6lB5hiBCJ4LIC25hs4lWKBBxAAAADSsse15v+4ODu9lu+9Aq/0QAAAABicojwjJRD0amsF0l2t2k+PXUVHjP0Kjkncg5n6ij3sskdk553LzReQ45Qoogj8mMUt5gJeMu5fxl0YxPv5gd4=</Value>
+    </Setting>
+    <Setting Name="ServerPSW" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAARwOaZZFBwUyBvdMiF3L66QAAAAACAAAAAAAQZgAAAAEAACAAAACY+BebAlLyoKfuGFfMWN15oTS5GA6T0EjOocf3xOQwGgAAAAAOgAAAAAIAACAAAAAgZDfB9oMPoQsbybzrqj8CLC5SaBRin5xtSsWkUN5eQSAAAABARdCVRf6Asb6MoTF55U+wlQRKn+eae/TqCseM0KhUN0AAAAD6ZkR7Vxi2iM79cJdJby8NujlKzO9OvWx/haK/QeA1BOHUGS4TdKMD1l5Asjyweqa/m4N3V0kXlxALtd7I7Xt6</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

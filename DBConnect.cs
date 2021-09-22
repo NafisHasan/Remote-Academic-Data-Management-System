@@ -42,10 +42,10 @@ namespace Student_Record
 
         private void Initialize()
         {
-            server = "198.154.99.221";
-            database = "GUB";
-            uid = "nafis";
-            password = "DBanhk1234.";
+            server = EncDec.ToInsecureString(EncDec.DecryptString(Properties.Settings.Default.serverIP));
+            database = Properties.Settings.Default.databaseName;
+            uid = EncDec.ToInsecureString(EncDec.DecryptString(Properties.Settings.Default.serverUID));
+            password = EncDec.ToInsecureString(EncDec.DecryptString(Properties.Settings.Default.ServerPSW));
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
             connection = new MySqlConnection(connectionString);

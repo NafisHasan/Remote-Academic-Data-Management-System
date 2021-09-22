@@ -16,5 +16,10 @@ namespace Student_Record
         {
             InitializeComponent();
         }
+
+        private void Form6_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
