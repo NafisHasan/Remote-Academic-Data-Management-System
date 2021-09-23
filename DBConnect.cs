@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
+using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Runtime.InteropServices;
 using System.Data;
@@ -29,6 +30,7 @@ namespace Student_Record
             }
         }
         private MySqlConnection connection;
+        private MySqlConnection NoDBconnection;
         private string server;
         private string database;
         private string uid;
@@ -47,11 +49,12 @@ namespace Student_Record
             uid = EncDec.ToInsecureString(EncDec.DecryptString(Properties.Settings.Default.serverUID));
             password = EncDec.ToInsecureString(EncDec.DecryptString(Properties.Settings.Default.ServerPSW));
             string connectionString;
-            connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
+            connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";SslMode=none;convert zero datetime=True";
+            string NoDBconnectionString= "SERVER=" + server + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";SslMode=none;convert zero datetime=True";
             connection = new MySqlConnection(connectionString);
+            NoDBconnection = new MySqlConnection(NoDBconnectionString);
         }
 
-        //open connection to database
         private bool OpenConnection()
         {
             if (IsInternetAvailable())
@@ -66,7 +69,7 @@ namespace Student_Record
                     switch (ex.Number)
                     {
                         case 0:
-                            MessageBox.Show("Cannot connect to server.  Contact administrator");
+                            MessageBox.Show(ex.Message);
                             break;
 
                         case 1045:
@@ -86,7 +89,6 @@ namespace Student_Record
             }
         }
 
-        //Close connection
         private bool CloseConnection()
         {
             try
@@ -101,17 +103,15 @@ namespace Student_Record
             }
         }
 
-        //Insert statement
         public void Insert(String Q)
         {
-        //open connection
+            
             if (this.OpenConnection() == true)
             {
-                //create command and assign the query and connection from the constructor
-                MySqlCommand cmd = new MySqlCommand(Q, connection);
-
-                //Execute command
                 
+                MySqlCommand cmd = new MySqlCommand(Q,connection);
+
+
                 try
                 {
                     cmd.ExecuteNonQuery();
@@ -121,30 +121,25 @@ namespace Student_Record
                     MessageBox.Show(ex.Message);
                 }
 
-                //close connection
                 this.CloseConnection();
             }
         }
 
-        //Update statement
         public void Update(String Q)
         {
 
-            //Open connection
             if (this.OpenConnection() == true)
             {
-                //create mysql command
+                
                 MySqlCommand cmd = new MySqlCommand
                 {
-                    //Assign the query using CommandText
                     CommandText = Q,
-                    //Assign the connection using Connection
+                    
                     Connection = connection
                 };
 
                 try
                 {
-                    //Execute query
                     cmd.ExecuteNonQuery();
                 }
 
@@ -154,21 +149,18 @@ namespace Student_Record
                 }
 
 
-                //close connection
                 this.CloseConnection();
             }
         }
 
-        //Delete statement
         public void Delete(String Q)
         {
 
             if (this.OpenConnection() == true)
             {
-                //create command and assign the query and connection from the constructor
+                
                 MySqlCommand cmd = new MySqlCommand(Q, connection);
 
-                //Execute command
 
                 try
                 {
@@ -179,12 +171,11 @@ namespace Student_Record
                     MessageBox.Show(ex.Message);
                 }
 
-                //close connection
                 this.CloseConnection();
             }
         }
 
-        public void FillDataSet(String Q1,String Q2)
+        public void FillDataSet(String Q1, String Q2)
         {
 
             if (this.OpenConnection() == true)
@@ -196,27 +187,21 @@ namespace Student_Record
             }
         }
 
-        public List<string>[] Select(string Q,Int16 column)
+        public List<string>[] Select(string Q, Int16 column)
         {
 
             string query = Q;
 
-            //Create a list to store the result
             List<string>[] list = new List<string>[column];
             for (int i = 0; i < column; i++)
                 list[i] = new List<string>();
 
-            //Open connection
             if (this.OpenConnection() == true)
             {
-                //Create Command
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-                //Create a data reader and Execute the command
+                
                 MySqlDataReader dataReader = cmd.ExecuteReader();
 
-                //Read the data and store them in the list
-
-               
                 while (dataReader.Read())
                 {
                     for (int i = 0; i < column; i++)
@@ -225,13 +210,10 @@ namespace Student_Record
 
                 }
 
-                //close Data Reader
                 dataReader.Close();
 
-                //close Connection
                 this.CloseConnection();
 
-                //return list to be displayed
                 return list;
             }
             else
@@ -240,7 +222,66 @@ namespace Student_Record
             }
         }
 
+        public void backup(String s)
+        {
+            if (this.OpenConnection() == true)
+            {
 
+                MySqlCommand cmd = new MySqlCommand();
+                MySqlBackup mb = new MySqlBackup(cmd);
+                cmd.Connection = connection;
+                try
+                {
+                    mb.ExportToFile(s);
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
 
+                this.CloseConnection();
+            }
+            
+        }
+
+        public void restore(String s)
+        {
+            if (this.OpenConnection() == true)
+            {
+
+                MySqlCommand cmd = new MySqlCommand();
+                MySqlBackup mb = new MySqlBackup(cmd);
+                cmd.Connection = connection;
+                try
+                {
+                    mb.ImportFromFile(s);
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                this.CloseConnection();
+            }
+        }
+
+        public void createdb(String Q)
+        {
+            if (this.OpenConnection() == true)
+            {
+
+                MySqlCommand cmd = new MySqlCommand(Q, NoDBconnection);
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                this.CloseConnection();
+            }
+        }
     }
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   

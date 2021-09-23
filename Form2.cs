@@ -89,14 +89,21 @@ namespace Student_Record
 
             //dbConnect = new DBConnect();
             //dbConnect.FillDataSet("select name from department", "department");
-            comboBox2.DataSource = DBConnect.DS.Tables["department"].DefaultView;
-            comboBox2.ValueMember = "name";
-            //dbConnect.FillDataSet("select batchId from batch", "batch");
-            comboBox5.DataSource = DBConnect.DS.Tables["batch"].DefaultView;
-            comboBox5.ValueMember = "batchId";
-            //dbConnect.FillDataSet("select name from program", "program");
-            comboBox3.DataSource = DBConnect.DS.Tables["program"].DefaultView;
-            comboBox3.ValueMember = "name";
+            try
+            {
+                comboBox2.DataSource = DBConnect.DS.Tables["department"].DefaultView;
+                comboBox2.ValueMember = "name";
+                //dbConnect.FillDataSet("select batchId from batch", "batch");
+                comboBox5.DataSource = DBConnect.DS.Tables["batch"].DefaultView;
+                comboBox5.ValueMember = "batchId";
+                //dbConnect.FillDataSet("select name from program", "program");
+                comboBox3.DataSource = DBConnect.DS.Tables["program"].DefaultView;
+                comboBox3.ValueMember = "name";
+            }
+            finally
+            {
+
+            }
             /*if (DBConnect.IsInternetAvailable())
             {
                 dbConnect = new DBConnect();
