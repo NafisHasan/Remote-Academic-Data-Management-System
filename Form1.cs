@@ -167,25 +167,26 @@ namespace Student_Record
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            MainMenuStrip.Enabled = false;
             DBConnect dbConnect = new DBConnect();
             dbConnect.FillDataSet("select name from department", "department");
             dbConnect.FillDataSet("select batchId from batch", "batch");
             dbConnect.FillDataSet("select name from program", "program");
             
-            if (fm2 == null || fm2.Text == "")
+            if (fm8 == null || fm8.Text == "")
             {
-                fm2 = new Form2
+                fm8 = new Form8
                 {
                     MdiParent = this,
                     Dock = DockStyle.Fill
                 };
-                fm2.Show();
+                fm8.Show();
             }
-            else if (CheckOpened(fm2.Text))
+            else if (CheckOpened(fm8.Text))
             {
-                fm2.WindowState = FormWindowState.Normal;
-                fm2.Dock = DockStyle.Fill;
-                fm2.Focus();
+                fm8.WindowState = FormWindowState.Normal;
+                fm8.Dock = DockStyle.Fill;
+                fm8.Focus();
             }
 
         }
@@ -221,27 +222,30 @@ namespace Student_Record
 
         private void iNPUTToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (fm2 == null || fm2.Text == "")
-            {
-                fm2 = new Form2
+            
+                if (fm2 == null || fm2.Text == "")
                 {
-                    MdiParent = this,
-                    Dock = DockStyle.Fill
-                };
-                fm2.Show();
-            }
-            else if (CheckOpened(fm2.Text))
-            {
-                fm2.WindowState = FormWindowState.Normal;
-                fm2.Dock = DockStyle.Fill;
-                fm2.Show();
-                fm2.Focus();
-            }
+                    fm2 = new Form2
+                    {
+                        MdiParent = this,
+                        Dock = DockStyle.Fill
+                    };
+                    fm2.Show();
+                }
+                else if (CheckOpened(fm2.Text))
+                {
+                    fm2.WindowState = FormWindowState.Normal;
+                    fm2.Dock = DockStyle.Fill;
+                    fm2.Show();
+                    fm2.Focus();
+                }
 
         }
 
         private void cONFIGURATIONToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MainMenuStrip.Enabled = false;
+            
             if (fm8 == null || fm8.Text == "")
             {
                 fm8 = new Form8

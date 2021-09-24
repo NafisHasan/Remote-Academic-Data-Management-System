@@ -25,12 +25,16 @@ namespace Student_Record
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /*dbConnect = new DBConnect();
-            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            //openFileDialog1.Filter = " SQL File(.sql) | *.sql ";
+            openFileDialog1.DefaultExt = ".sql";
+            openFileDialog1.AddExtension = true;
+            openFileDialog1.CheckPathExists = true;
+            openFileDialog1.FileName = "";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                textBox1.Text = folderBrowserDialog1.SelectedPath + ".sql";
-                dbConnect.backup(folderBrowserDialog1.SelectedPath+".sql");
-            }*/
+                dbConnect = new DBConnect();
+                dbConnect.restore(openFileDialog1.FileName);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

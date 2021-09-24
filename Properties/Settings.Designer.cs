@@ -37,7 +37,7 @@ namespace Student_Record.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("GUB")]
+        [global::System.Configuration.DefaultSettingValueAttribute("RADMS")]
         public string databaseName {
             get {
                 return ((string)(this["databaseName"]));
@@ -68,6 +68,42 @@ namespace Student_Record.Properties {
             }
             set {
                 this["ServerPSW"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string userauth {
+            get {
+                return ((string)(this["userauth"]));
+            }
+            set {
+                this["userauth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string userauthpass {
+            get {
+                return ((string)(this["userauthpass"]));
+            }
+            set {
+                this["userauthpass"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string userid {
+            get {
+                return ((string)(this["userid"]));
+            }
+            set {
+                this["userid"] = value;
             }
         }
     }

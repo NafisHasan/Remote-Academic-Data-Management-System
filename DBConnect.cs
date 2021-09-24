@@ -50,9 +50,7 @@ namespace Student_Record
             password = EncDec.ToInsecureString(EncDec.DecryptString(Properties.Settings.Default.ServerPSW));
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";SslMode=none;convert zero datetime=True";
-            string NoDBconnectionString= "SERVER=" + server + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";SslMode=none;convert zero datetime=True";
             connection = new MySqlConnection(connectionString);
-            NoDBconnection = new MySqlConnection(NoDBconnectionString);
         }
 
         private bool OpenConnection()
@@ -265,12 +263,19 @@ namespace Student_Record
             }
         }
 
-        public void createdb(String Q)
+        public void createdb(String Q,String con)
         {
-            if (this.OpenConnection() == true)
+            NoDBconnection = new MySqlConnection(con);
+            try
             {
+                NoDBconnection.Open();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-                MySqlCommand cmd = new MySqlCommand(Q, NoDBconnection);
+            MySqlCommand cmd = new MySqlCommand(Q, NoDBconnection);
                 try
                 {
                     cmd.ExecuteNonQuery();
@@ -279,9 +284,32 @@ namespace Student_Record
                 {
                     MessageBox.Show(ex.Message);
                 }
-
-                this.CloseConnection();
+            NoDBconnection.Close();
+        }
+        public void Initablecreate(String s, String con)
+        {
+            NoDBconnection = new MySqlConnection(con);
+            try
+            {
+                NoDBconnection.Open();
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            MySqlCommand cmd = new MySqlCommand();
+            MySqlBackup mb = new MySqlBackup(cmd);
+            cmd.Connection = NoDBconnection;
+            try
+            {
+                mb.ImportFromFile(s);
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            NoDBconnection.Close();
         }
     }
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
