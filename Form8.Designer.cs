@@ -31,6 +31,7 @@ namespace Student_Record
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form8));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button14 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
@@ -82,7 +83,6 @@ namespace Student_Record
             this.panel8 = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.button14 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -109,6 +109,20 @@ namespace Student_Record
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(681, 324);
             this.panel1.TabIndex = 0;
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.Honeydew;
+            this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Khaki;
+            this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.Location = new System.Drawing.Point(182, 250);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(309, 23);
+            this.button14.TabIndex = 29;
+            this.button14.Text = "DELETE SAVED CREDENTIALS";
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // checkBox1
             // 
@@ -687,20 +701,6 @@ namespace Student_Record
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // button14
-            // 
-            this.button14.BackColor = System.Drawing.Color.Honeydew;
-            this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Khaki;
-            this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Location = new System.Drawing.Point(182, 250);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(309, 23);
-            this.button14.TabIndex = 29;
-            this.button14.Text = "DELETE SAVED CREDENTIALS";
-            this.button14.UseVisualStyleBackColor = false;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
             // Form8
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -723,6 +723,7 @@ namespace Student_Record
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "RADMS";
+            this.Activated += new System.EventHandler(this.Form8_Activated);
             this.Load += new System.EventHandler(this.Form8_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

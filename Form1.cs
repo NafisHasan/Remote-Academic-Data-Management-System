@@ -169,16 +169,18 @@ namespace Student_Record
         {
             MainMenuStrip.Enabled = false;
             DBConnect dbConnect = new DBConnect();
-            dbConnect.FillDataSet("select name from department", "department");
-            dbConnect.FillDataSet("select batchId from batch", "batch");
-            dbConnect.FillDataSet("select name from program", "program");
-            
+            if (Properties.Settings.Default.serverIP != "" && Properties.Settings.Default.databaseName != "" && Properties.Settings.Default.serverUID != "" && Properties.Settings.Default.ServerPSW != "")
+            {   
+                dbConnect.FillDataSet("select name from department", "department");
+                dbConnect.FillDataSet("select batchId from batch", "batch");
+                dbConnect.FillDataSet("select name from program", "program");
+            }
             if (fm8 == null || fm8.Text == "")
             {
                 fm8 = new Form8
                 {
                     MdiParent = this,
-                    Dock = DockStyle.Fill
+                    Dock = DockStyle.Fill,
                 };
                 fm8.Show();
             }
@@ -245,7 +247,8 @@ namespace Student_Record
         private void cONFIGURATIONToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MainMenuStrip.Enabled = false;
-            
+            fm8.DisBtn();
+
             if (fm8 == null || fm8.Text == "")
             {
                 fm8 = new Form8
@@ -254,6 +257,7 @@ namespace Student_Record
                     Dock = DockStyle.Fill
                 };
                 fm8.Show();
+                //fm8.button1.Enabled = false;
             }
             else if (CheckOpened(fm8.Text))
             {
@@ -261,7 +265,9 @@ namespace Student_Record
                 fm8.Dock = DockStyle.Fill;
                 //fm8.Show();
                 fm8.Focus();
+                
             }
+            
         }
 
         /*protected override void OnFormClosing(FormClosingEventArgs e)
@@ -280,5 +286,6 @@ namespace Student_Record
                     break;
             }
         }*/
+
     }
 }

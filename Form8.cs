@@ -239,7 +239,7 @@ namespace Student_Record
             list =dbConnect.Select("select password from alluser where userId='"+textBox12.Text+"';", 1);
             if (list[0][0] == EncDec.CreateMD5Hash(textBox13.Text))
             {
-                
+
                 button1.Enabled = true;
                 button2.Enabled = true;
                 button3.Enabled = true;
@@ -255,9 +255,13 @@ namespace Student_Record
                     Properties.Settings.Default.userauth = "1";
                     Properties.Settings.Default.Save();
                 }
+                textBox13.Clear();
             }
             else
+            {
                 MessageBox.Show("WRONG USER ID OR PASSWORD");
+                textBox13.Clear();
+            }
         }
 
         private void Form8_Load(object sender, EventArgs e)
@@ -277,7 +281,6 @@ namespace Student_Record
                 list = dbConnect.Select("select password from alluser where userId='" + Properties.Settings.Default.userid + "';", 1);
                 if (list[0][0] == Properties.Settings.Default.userauthpass)
                 {
-
                     button1.Enabled = true;
                     button2.Enabled = true;
                     button3.Enabled = true;
@@ -301,6 +304,29 @@ namespace Student_Record
             Properties.Settings.Default.userid = "";
             Properties.Settings.Default.userauth = "0";
             Properties.Settings.Default.Save();
+        }
+
+        private void Form8_Activated(object sender, EventArgs e)
+        {
+            textBox13.Clear();
+            //button1.Enabled = false;
+            //button2.Enabled = false;
+            //button3.Enabled = false;
+            //button4.Enabled = false;
+            //button5.Enabled = false;
+            //button6.Enabled = false;
+            //button7.Enabled = false;
+
+        }
+        public void DisBtn()
+        {
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
+            button5.Enabled = false;
+            button6.Enabled = false;
+            button7.Enabled = false;
         }
     }
 }

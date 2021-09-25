@@ -207,6 +207,7 @@
             this.comboBox9.Name = "comboBox9";
             this.comboBox9.Size = new System.Drawing.Size(288, 21);
             this.comboBox9.TabIndex = 66;
+            this.comboBox9.SelectedIndexChanged += new System.EventHandler(this.comboBox9_SelectedIndexChanged);
             // 
             // button11
             // 
@@ -300,6 +301,7 @@
             this.button12.TabIndex = 61;
             this.button12.Text = "SEARCH";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // comboBox11
             // 
@@ -316,6 +318,7 @@
             this.comboBox12.Name = "comboBox12";
             this.comboBox12.Size = new System.Drawing.Size(100, 21);
             this.comboBox12.TabIndex = 59;
+            this.comboBox12.SelectedIndexChanged += new System.EventHandler(this.comboBox12_SelectedIndexChanged);
             // 
             // comboBox14
             // 
@@ -601,6 +604,7 @@
             this.button3.TabIndex = 39;
             this.button3.Text = "PRINT";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // comboBox6
             // 

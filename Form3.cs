@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using DGVPrinterHelper;
 
 namespace Student_Record
 {
@@ -28,6 +29,18 @@ namespace Student_Record
         private void button9_Click(object sender, EventArgs e)
         {
 
+            dbConnect = new DBConnect();
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete course:"+ dataGridView2.Rows[dataGridView2.CurrentCell.RowIndex].Cells[1].Value.ToString() + " from Database?", "Warning", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                dbConnect.Delete("delete from CourseProgram where courseCode='" + dataGridView2.Rows[dataGridView2.CurrentCell.RowIndex].Cells[0].Value.ToString() + "'");
+                dbConnect.Delete("delete from course where courseCode='"+ dataGridView2.Rows[dataGridView2.CurrentCell.RowIndex].Cells[0].Value.ToString() + "'");
+                dataGridView2.Rows.RemoveAt(dataGridView2.CurrentCell.RowIndex);
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do nothing
+            }
         }
 
         private void Form3_Load(object sender, EventArgs e)
@@ -164,6 +177,165 @@ namespace Student_Record
         private void button2_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            dbConnect = new DBConnect();
+            List<string>[] list;
+            list = dbConnect.Select(" select courseCode,courseTitle,credit,shortDesc from course where courseCode in (select courseCode from CourseProgram where programId in(select programId from program where name='"+ comboBox7.Text + "'))", 4);
+            
+            Int32 count = list[0].Count;
+            dataGridView2.Rows.Clear();
+            for (int i = 0; i < count; i++)
+            {
+                dataGridView2.Rows.Add();
+                dataGridView2.Rows[i].Cells[0].Value = list[0][i];
+                dataGridView2.Rows[i].Cells[1].Value = list[1][i];
+                dataGridView2.Rows[i].Cells[2].Value = list[2][i];
+                dataGridView2.Rows[i].Cells[3].Value = list[3][i];
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            dataGridView2.Rows.Clear();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            String cc= dataGridView2.Rows[dataGridView2.CurrentCell.RowIndex].Cells[0].Value.ToString();
+            String ct = dataGridView2.Rows[dataGridView2.CurrentCell.RowIndex].Cells[1].Value.ToString();
+            String cr = dataGridView2.Rows[dataGridView2.CurrentCell.RowIndex].Cells[2].Value.ToString();
+            String cd = dataGridView2.Rows[dataGridView2.CurrentCell.RowIndex].Cells[3].Value.ToString();
+            dbConnect = new DBConnect();
+            dbConnect.Update("update course set courseTitle='"+ct+"',credit="+cr+",shortDesc='"+cd+"' where courseCode='"+cc+"'");
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            int numRows1 = dataGridView2.Rows.Count;
+            String q = "";
+            if (numRows1 > 1)
+            {
+                for (int i = 0; i < numRows1 - 1; i++)
+                {
+
+                    q+= "update course set courseTitle = '"+ dataGridView2.Rows[i].Cells[1].Value.ToString() + "', credit = "+ dataGridView2.Rows[i].Cells[2].Value.ToString() + ", shortDesc = '"+ dataGridView2.Rows[i].Cells[3].Value.ToString() + "' where courseCode = '"+ dataGridView2.Rows[i].Cells[0].Value.ToString() + "';";
+
+
+                }
+            }
+            dbConnect = new DBConnect();
+            dbConnect.Update(q);
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            string shift = null;
+            if (radioButton4.Checked == true)
+            {
+                shift = radioButton4.Text;
+            }
+            else if (radioButton3.Checked == true)
+            {
+                shift = radioButton3.Text;
+            }
+            string batch = comboBox10.Text;
+            string program = comboBox8.Text;
+            string semester = comboBox12.Text;
+            String year = dateTimePicker2.Text;
+            if (semester == "Spring")
+                semester = "1";
+            else if (semester == "Summer")
+                semester = "2";
+            else
+                semester = "3";
+
+            semester = year + semester;
+            dbConnect = new DBConnect();
+            List<string>[] list;
+            list = dbConnect.Select("select offeredcourse.courseCode, course.courseTitle, course.credit, facultymember.name from offeredcourse inner join course on offeredcourse.courseCode=course.courseCode left join facultymember on offeredcourse.facultyMemberId=facultymember.facultyMemberId where programId=(select programId from program where name='" + program + "' and shift='" + shift + "') and  batchId="+batch+" and semesterId="+semester, 4);
+            //Console.WriteLine("select offeredcourse.courseCode, course.courseTitle, course.credit, facultymember.name from offeredcourse inner join course on offeredcourse.courseCode=course.courseCode left join facultymember on offeredcourse.facultyMemberId=facultymember.facultyMemberId where programId=(select programId from program where name='" + program + "' and shift='" + shift + "') and  batchId=" + batch + " and semesterId=" + semester);
+            Int32 count = list[0].Count;
+            dataGridView3.Rows.Clear();
+            for (int i = 0; i < count; i++)
+            {
+                dataGridView3.Rows.Add();
+                dataGridView3.Rows[i].Cells[0].Value = list[0][i];
+                dataGridView3.Rows[i].Cells[1].Value = list[1][i];
+                dataGridView3.Rows[i].Cells[2].Value = list[2][i];
+                dataGridView3.Rows[i].Cells[3].Value = list[3][i];
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            dataGridView3.Rows.Clear();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            DGVPrinter printer = new DGVPrinter();
+            printer.ColumnWidths.Add("dataGridViewTextBoxColumn5", 100);
+
+            printer.Title = "Global University Bangladesh";
+
+            String subtitle = "";
+            subtitle = "Department: " + comboBox9.Text + ",  Program: " + comboBox8.Text + "\n Batch:"+comboBox10.Text+" " + comboBox12.Text + "-" + dateTimePicker2.Text;
+            printer.SubTitle = subtitle;
+
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit |
+
+                                          StringFormatFlags.NoClip;
+
+            printer.PageNumbers = false;
+
+            printer.PageNumberInHeader = false;
+
+            printer.PorportionalColumns = true;
+
+            printer.HeaderCellAlignment = StringAlignment.Near;
+
+            printer.FooterAlignment = StringAlignment.Near;
+            printer.Footer = "                                                                                                                                        _______________________\n                                                                                                                                                Head of Department";
+
+            printer.FooterSpacing = 20;
+            printer.printDocument.DefaultPageSettings.Landscape = true;
+
+
+
+            printer.PrintDataGridView(dataGridView3);
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            string shift = null;
+            if (radioButton4.Checked == true)
+            {
+                shift = radioButton4.Text;
+            }
+            else if (radioButton3.Checked == true)
+            {
+                shift = radioButton3.Text;
+            }
+            string batch = comboBox10.Text;
+            string program = comboBox8.Text;
+            string semester = comboBox12.Text;
+            String year = dateTimePicker2.Text;
+            if (semester == "Spring")
+                semester = "1";
+            else if (semester == "Summer")
+                semester = "2";
+            else
+                semester = "3";
+
+            semester = year + semester;
+            String cc = dataGridView2.Rows[dataGridView2.CurrentCell.RowIndex].Cells[0].Value.ToString();
+            String ct = dataGridView2.Rows[dataGridView2.CurrentCell.RowIndex].Cells[3].Value.ToString();
+            
+            dbConnect = new DBConnect();
+            dbConnect.Update("update offeredcourse set facultyMemberId=(select distinct facultyMemberId from facultymember where name='"+ct+"')  where programId=(select programId from program where name='" + program + "' and shift='" + shift + "') and  batchId=" + batch + " and semesterId=" + semester+ " and courseCode='"+cc+"'");
         }
     }
     
