@@ -7,3 +7,6 @@ Remote Academic Data Management System is a windows based desktop software, whic
 ![Registration](https://github.com/NafisHasan/Remote-Academic-Data-Management-System/blob/master/registration.png)
 ![Course](https://github.com/NafisHasan/Remote-Academic-Data-Management-System/blob/master/course.png)
 ![Student](https://github.com/NafisHasan/Remote-Academic-Data-Management-System/blob/master/hrm-student.png)
+![Report Sample 1](https://github.com/NafisHasan/Remote-Academic-Data-Management-System/blob/master/reportSample-1.jpg)
+![Report Sample 2](https://github.com/NafisHasan/Remote-Academic-Data-Management-System/blob/master/reportSample-2.jpg)
+![Report Sample 3](https://github.com/NafisHasan/Remote-Academic-Data-Management-System/blob/master/reportSample-3.jpg)
